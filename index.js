@@ -15,5 +15,5 @@ router.get('/', (req, res) => {
 app.use(router);
 
 app.listen(PORT, () => {
-    console.log(`Example app listening on port ${PORT}`)
+    console.log(`Ragna-Compare listening on port ${PORT}`)
 });
