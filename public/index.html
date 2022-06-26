@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ragnarock Compare</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.37/vue.cjs.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body id="app">    
+    <div class="container">
+        <h1>RagnaRock PP Comparer</h1>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="compareFrom">Your username&nbsp;</label>
+                    <input type="text" id="compareFrom" v-model="myName" class="form-control"/>
+                </div>                
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="compareTo">Compare with&nbsp;</label>
+                    <input type="text" id="compareTo" v-model="theirName" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+                <div class="form-group" style="text-align:center; padding:10px;">
+                    <button class="btn btn-primary" v-on:click="CompareScores()">Submit</button>
+                </div>
+            </div>
+
+            <div class="col-sm-12" v-show="myComparedScores.length > 0">
+                <!-- <div class="row">
+                    <div class="col-sm-6">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Song/Author</th>
+                                    <th>Difficulty</th>
+                                    <th>Distance</th>
+                                    <th>Raw PP</th>
+                                    <th>Weighted PP</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="score in myScores">
+                                    <td>{{score.title}} <small>{{score.author}}</small></td>
+                                    <td>{{score.diff}}</td>
+                                    <td>{{score.distance}}</td>
+                                    <td>{{score.rawPP}}</td>
+                                    <td>{{score.weightedPP}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Song/Author</th>
+                                    <th>Difficulty</th>
+                                    <th>Distance</th>
+                                    <th>Raw PP</th>
+                                    <th>Weighted PP</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="score in theirScores">
+                                    <td>{{score.title}} <small>{{score.author}}</small></td>
+                                    <td>{{score.diff}}</td>
+                                    <td>{{score.distance}}</td>
+                                    <td>{{score.rawPP}}</td>
+                                    <td>{{score.weightedPP}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div> -->
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Song/Author</th>
+                                    <th>Difficulty</th>
+                                    <th>Distance</th>
+                                    <th>Their Distance</th>
+                                    <th>Distance Diff</th>
+                                    <th>My Raw PP</th>
+                                    <th>Their Raw PP</th>
+                                    <th>PP Diff</th>
+                                    <!-- <th>Weighted PP</th> -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(score, index) in myComparedScores">
+                                    <td>{{index + 1}}.&nbsp;{{score.title}} <small>{{score.author}}</small></td>
+                                    <td>{{score.diff}}</td>
+                                    <td>{{score.distance}}</td>
+                                    <td>{{score.theirDistance}}</td>
+                                    <td :style="{'color': score.distanceDiff.toFixed(2) > 0 ? 'green' : 'red'}">{{score.distanceDiff.toFixed(2)}}</td>
+                                    <td>{{score.rawPP}}</td>
+                                    <td>{{score.theirRawPP}}</td>
+                                    <td :style="{'color': score.rawPPDiff.toFixed(2) > 0 ? 'green' : 'red'}">{{score.rawPPDiff.toFixed(2)}}</td>
+                                    <!-- <td>{{score.weightedPP}}</td> -->
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="/scripts/vue_app.js"></script>
+</body>
+</html>
