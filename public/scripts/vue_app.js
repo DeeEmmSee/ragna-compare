@@ -74,7 +74,7 @@ const RagnaApp = {
 
                 if (mainDiv != null) {
                     var myTable = mainDiv.getElementsByTagName("table")[0];
-                    var rows = myTable.getElementsByTagName("tr");
+                    var rows = myTable.rows; //getElementsByTagName("tr");
                     var pages = mainDiv.getElementsByClassName("pagination-rhokapa")[0].getElementsByTagName("a");//[3].innerText;
                     var totalPages = 1; //Number(pages[pages.length - 1]);
 
