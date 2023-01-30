@@ -101,7 +101,8 @@
                             </thead>
                             <tbody>
                                 <tr v-for="(score, index) in myComparedScores">
-                                    <td>{{index + 1}}.&nbsp;{{score.title}} <small>{{score.author}}</small></td>
+                                    <!-- <td>{{index + 1}}.&nbsp;{{score.title}} <small>{{score.author}}</small></td> -->
+                                    <td>{{score.title}} <small>{{score.author}}</small></td>
                                     <td>{{score.diff}}</td>
                                     <td>{{score.distance}}</td>
                                     <td>{{score.theirDistance}}</td>

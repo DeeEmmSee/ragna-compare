@@ -75,21 +75,28 @@ const RagnaApp = {
                 if (mainDiv != null) {
                     var myTable = mainDiv.getElementsByTagName("table")[0];
                     var rows = myTable.getElementsByTagName("tr");
-                    var pages = mainDiv.getElementsByClassName("pagination")[0].getElementsByTagName("a");//[3].innerText;
+                    var pages = mainDiv.getElementsByClassName("pagination-rhokapa")[0].getElementsByTagName("a");//[3].innerText;
                     var totalPages = 1; //Number(pages[pages.length - 1]);
 
-                    if (pages.length == 2) {
-                        totalPages = 1;
+                    for (var i = 0; i < pages.length; i++) {
+                        if (pages[i].innerHTML == "Last") {
+                            totalPages = Number(pages[i].href.substr(pages[i].href.lastIndexOf("=") + 1));
+                            break;
+                        }
                     }
-                    else if (pages.length == 3) {
-                        totalPages = 2;
-                    }
-                    else if (pages.length == 4) {
-                        totalPages = 3;
-                    }
-                    else if (pages.length == 5) {
-                        totalPages = pages[3].innerText;
-                    }
+
+                    // if (pages.length == 2) {
+                    //     totalPages = 1;
+                    // }
+                    // else if (pages.length == 3) {
+                    //     totalPages = 2;
+                    // }
+                    // else if (pages.length == 4) {
+                    //     totalPages = 3;
+                    // }
+                    // else if (pages.length == 5) {
+                    //     totalPages = pages[3].innerText;
+                    // }
 
                     if (useMyScore) {
                         app.GetScores(rows, app.myScoresObj);
